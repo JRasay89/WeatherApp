@@ -1,0 +1,26 @@
+#main_container {
+}
+
+.col_centered {
+	float: none;
+	margin: 0 auto;
+}
+#inner_col_container {
+	padding: 0;
+}
+/************
+---Zipcode---
+*************/
+#zipcode {
+
+}
+#zipcode div {
+	padding: 0;
+}
+#zipcode_input {
+	width: 75%;
+	float: left;
+}
+#find_button {
+	width: 25%;
+}
