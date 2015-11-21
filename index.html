@@ -20,9 +20,14 @@
 	</head>
 	<body ng-app="myApp">
 		<div ng-controller="myCtrl" class="container" id="main_container">
-			<div class="col-xs-12 col-sm-12 col-lg-6 col_centered" id="inner_col_container">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col_centered default_bg" id="background">
+				<!-- Title -->
+				<div class="container-fluid" id="title">
+					<h1>AngularJS Weather</h1>
+				</div>
+				<!-- Zipcode input -->
 				<div class="container-fluid" id="zipcode">
-					<div class="col-lg-8 col_centered">
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col_centered">
 						<form>
 							<input ng-model="zipcode" placeholder="Enter your zipcode" type="text" id="zipcode_input">
 							<button ng-click="getWeather()" id="find_button">Find</button>
@@ -30,11 +35,34 @@
 					</div>
 				</div>
 				<div class="container-fluid" id="weather_info">
-					<p>City: {{weatherInfo.city}}</p>
-					<p>{{weatherInfo.weatherMain}}</p>
-					<p>Temp: {{weatherInfo.temp}}</p>
-					<p>Humidity: {{weatherInfo.humidity}}</p>
-					<p>Pressure: {{weatherInfo.pressure}}</p>
+					<!-- Today's weather -->
+					<div class="row" id="weather_row">
+						<div ng-show="showWeather()" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col_centered" >
+							<div class="col-xs-12 col-sm-6 col-md6 col-lg-6" id="weather_col">
+								<h2>{{weather.name}}</h2>
+								<p>{{(weather.dt * 1000) | date: 'EEE, MMM d'}}</p>
+								<img ng-src="{{getIcon(weather.weather[0].icon)}}"/>
+								<p>{{weather.weather[0].main}}</p>
+								<h3>{{weather.main.temp | number: 0}}°F</h3>								
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="forecast_col">
+								<p>Sunrise: {{(weather.sys.sunrise * 1000) | date: 'h:mm a'}} </p>
+								<p>Sunset: {{(weather.sys.sunset * 1000) | date: 'h:mm a'}} </p>
+								<p>Humidity: {{weather.main.humidity | number: 0}}%</p>
+								<p>Pressure: {{weather.main.pressure | number: 0}}hPa</p>
+							</div>
+						</div>
+					</div>
+					<!-- Daily forecast -->
+					<div class="row" id="forecast">
+						<div ng-repeat="day in forecast.list" class="col-xs-4 col-sm-3 col-md-1 col-lg-1 forecast_col col_centered">
+							<p>{{(day.dt * 1000) | date: 'EEE, MMM d'}}</p>
+							<img ng-src="{{getIcon(day.weather[0].icon)}}"/>
+							<p>{{day.weather[0].main}}</p>
+							<p>Hi: {{day.temp.max | number: 0}}°F</p>
+							<p>Lo: {{day.temp.min | number: 0}}°F</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
