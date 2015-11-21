@@ -1,26 +1,124 @@
-#main_container {
+body {
+	background-color: #cccccc;
 }
-
+#main_container {
+	padding-top: 1%;
+}
 .col_centered {
 	float: none;
 	margin: 0 auto;
 }
-#inner_col_container {
-	padding: 0;
+/*********************
+======Background======
+**********************/
+#background {
+	border-width: 1px;
+	border-style: solid;
+	padding: 10px 10px;
+	box-shadow: 10px 10px 5px #999999;
+	transition: background ease-in-out 1s;
 }
-/************
----Zipcode---
-*************/
-#zipcode {
+.default_bg {
+	background: url("../images/weather_bg/default_weather.png?v=1234") no-repeat;
+}
+.clearDay_bg {
+	background: url("../images/weather_bg/clear_day.png?v=1234") no-repeat;
+}
+.clearNight_bg {
+	background: url("../images/weather_bg/clear_night.png?v=1234") no-repeat;
+}
+.fewCloudsDay_bg {
+	background: url("../images/weather_bg/fewClouds_day.png?v=1234") no-repeat;
+}
+.fewCloudsNight_bg {
+	background: url("../images/weather_bg/fewClouds_night.png?v=1234") no-repeat;
+}
+.cloudyDay_bg {
+	background: url("../images/weather_bg/cloudy_day.png") no-repeat;
+}
+.cloudyNight_bg {
+	background: url("../images/weather_bg/cloudy_night.png") no-repeat;
+}
+.rainyDay_bg {
+	background: url("../images/weather_bg/rainy_day.png?v=1234") no-repeat;
+}
+.rainyNight_bg {
+	background: url("../images/weather_bg/rainy_night.png?v=1234") no-repeat;
+}
+.thunderstorm_bg {
+	background: url("../images/weather_bg/thunderstorm.png?v=1234") no-repeat;
+}
+.snowDay_bg {
+	background: url("../images/weather_bg/snow_day.png?v=1234") no-repeat;
+}
+.snowNight_bg {
+	background: url("../images/weather_bg/snow_night.png?v=1234") no-repeat;
+}
+.mist_bg {
+	background: url("../images/weather_bg/mist.png?v=1234") no-repeat;
+}
+/****************
+======Title======
+*****************/
+#title {
+	text-align: center;
+	color: #fff;
+}
 
+/************************
+======Zipcode Input======
+*************************/
+#zipcode {
 }
 #zipcode div {
 	padding: 0;
 }
 #zipcode_input {
 	width: 75%;
+	height: 50px;
 	float: left;
 }
 #find_button {
 	width: 25%;
+	height: 50px;
+}
+
+/***********************
+======Weather Info======
+************************/
+#weather_info {
+	height: 587px;
+	margin-top: 10px;
+	padding-top: 10px; 
+	text-align: center;
+	overflow: auto;
+}
+#weather_row .col_centered {
+	padding: 10px 10px;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #fff;
+}
+#weather_col {
+	line-height: 5px;
+}
+#forecast_col {
+	padding: 10px 0;
+	position: relative;
+	top: 20px;
+	line-height: 20px;
+}
+#forecast .col_centered {
+	display: inline-block;
+	float: none;
+}
+.forecast_col {
+	width: 125px;
+	margin: 10px 10px;
+	padding: 10px 0;
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #fff;
+}
+.forecast_col p {
+	line-height: 12px;
 }
