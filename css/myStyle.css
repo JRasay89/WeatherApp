@@ -18,20 +18,38 @@ body {
 	box-shadow: 10px 10px 5px #999999;
 	transition: background ease-in-out 1s;
 }
+/*Preload background images */
+#background:after {
+	display: none;
+	content:
+		url("../images/weather_bg/default_weather.png")
+		url("../images/weather_bg/clear_day.png")
+		url("../images/weather_bg/clear_night.png")
+		url("../images/weather_bg/fewClouds_day.png")
+		url("../images/weather_bg/fewClouds_night.png")
+		url("../images/weather_bg/cloudy_day.png")
+		url("../images/weather_bg/cloudy_night.png")
+		url("../images/weather_bg/rainy_day.png")
+		url("../images/weather_bg/rainy_night.png")
+		url("../images/weather_bg/thunderstorm.png")
+		url("../images/weather_bg/snow_day.png")
+		url("../images/weather_bg/snow_night.png")
+		url("../images/weather_bg/mist.png");
+}
 .default_bg {
-	background: url("../images/weather_bg/default_weather.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/default_weather.png") no-repeat;
 }
 .clearDay_bg {
-	background: url("../images/weather_bg/clear_day.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/clear_day.png") no-repeat;
 }
 .clearNight_bg {
-	background: url("../images/weather_bg/clear_night.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/clear_night.png") no-repeat;
 }
 .fewCloudsDay_bg {
-	background: url("../images/weather_bg/fewClouds_day.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/fewClouds_day.png") no-repeat;
 }
 .fewCloudsNight_bg {
-	background: url("../images/weather_bg/fewClouds_night.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/fewClouds_night.png") no-repeat;
 }
 .cloudyDay_bg {
 	background: url("../images/weather_bg/cloudy_day.png") no-repeat;
@@ -40,22 +58,22 @@ body {
 	background: url("../images/weather_bg/cloudy_night.png") no-repeat;
 }
 .rainyDay_bg {
-	background: url("../images/weather_bg/rainy_day.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/rainy_day.png") no-repeat;
 }
 .rainyNight_bg {
-	background: url("../images/weather_bg/rainy_night.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/rainy_night.png") no-repeat;
 }
 .thunderstorm_bg {
-	background: url("../images/weather_bg/thunderstorm.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/thunderstorm.png") no-repeat;
 }
 .snowDay_bg {
-	background: url("../images/weather_bg/snow_day.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/snow_day.png") no-repeat;
 }
 .snowNight_bg {
-	background: url("../images/weather_bg/snow_night.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/snow_night.png") no-repeat;
 }
 .mist_bg {
-	background: url("../images/weather_bg/mist.png?v=1234") no-repeat;
+	background: url("../images/weather_bg/mist.png") no-repeat;
 }
 /****************
 ======Title======
