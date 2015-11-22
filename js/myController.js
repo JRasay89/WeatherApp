@@ -3,55 +3,87 @@ app.controller("myCtrl", function($scope, $http) {
 	$scope.hasWeather = false;
 	$scope.currentBG = "default_bg";	
 	$scope.getWeather = function() {
+		var URL_ADDRESS = "http://maps.googleapis.com/maps/api/geocode/json";
 		var URL_WEATHER = "http://api.openweathermap.org/data/2.5/weather";
 		var URL_FORECAST = "http://api.openweathermap.org/data/2.5/forecast/daily";
 		var APPID = "3104ae1ee094a4787af98ff506ab7154";
+		var request_address = {
+			method: "GET",
+			url: URL_ADDRESS,
+			params: {
+			  address: $scope.zipcode,
+			  sensor: "true",
+			  mode: "json"
+			}
+		}
+		//Rquest to get today's weather information
 		var request_weather = {
 			method: "GET",
 			url: URL_WEATHER,
 			params: {
-			  zip: $scope.zipcode+",us",
-			  mode: "json",
-			  units: "imperial",
-			  appid: APPID
+				lat: "",
+				lon: "",
+			    mode: "json",
+			    units: "imperial",
+			    appid: APPID
 			}
 		};
+		//Request to get the weather information for next 7 days
 		var request_forecast = {
 			method: "GET",
 			url: URL_FORECAST,
 			params: {
 				mode: "json",
-				zip: $scope.zipcode+",us",
+				lat: "",
+				lon: "",
 				units: "imperial",
 				cnt: "7",
 				appid: APPID
 			}
 		};
-		$http(request_weather)
+		//Request for the address from google api
+		$http(request_address)
 			.then(function(response) {
-				console.log(response);
-				if (!response.data.message) {
-					//console.log(response.data.name);
-					$scope.hasWeather = true;
-					$scope.weather = response.data;
-					$scope.changeBackground($scope.weather.weather[0].icon);
-					//Get the daily forecast
-					$http(request_forecast)
-						.then(function(response) {
-							console.log(response);
-							$scope.forecast = response.data;
-						}).
-						catch(function(response) {
-							
-						});
-				}
-				else {
-					console.log(response.data.message);
-				}
+				$scope.formattedAddress = response.data.results[0].formatted_address;
+				$scope.areaLocation = response.data.results[0].geometry.location;
+				
+				//Set the lattitude and longitude for the weather and forecast request
+				request_weather.params.lat = $scope.areaLocation.lat;
+				request_weather.params.lon = $scope.areaLocation.lng;
+				request_forecast.params.lat = $scope.areaLocation.lat;
+				request_forecast.params.lon = $scope.areaLocation.lng;
+				
+				//Request to get today's weather information for the given location
+				$http(request_weather)
+					.then(function(response) {
+						console.log(response);
+						if (!response.data.message) {
+							//console.log(response.data.name);
+							$scope.hasWeather = true;
+							$scope.weather = response.data;
+							$scope.changeBackground($scope.weather.weather[0].icon);
+							//Request to get the forecast if getting today's weather was successful
+							$http(request_forecast)
+								.then(function(response) {
+									console.log(response);
+									$scope.forecast = response.data;
+								}).
+								catch(function(response) {
+									
+								});
+						}
+						else {
+							console.log(response.data.message);
+						}
+					}).
+					catch(function(response) {
+						console.log(response);
+					});					
 			}).
 			catch(function(response) {
 				console.log(response);
-			});	
+			});
+
 		//Reset text for input box
 		$scope.zipcode = "";
 	}
