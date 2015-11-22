@@ -13,9 +13,10 @@ weather informations for that given location.
 You can check out a demo of the app [here!](http://jrasay89.github.io/WeatherApp)
 
 ##Technology used
-*HTML
-*CSS
-*Boostrap
-*AngularJS
-*JQuery
-*OpenWeatherMap API
+* HTML
+* CSS
+* Boostrap
+* AngularJS
+* JQuery
+* OpenWeatherMap API
+* Google Geolocation API
