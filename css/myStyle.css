@@ -87,6 +87,7 @@ body {
 ======Zipcode Input======
 *************************/
 #zipcode {
+
 }
 #zipcode div {
 	padding: 0;
@@ -95,12 +96,28 @@ body {
 	width: 75%;
 	height: 50px;
 	float: left;
+	border-radius: 0;
 }
 #find_button {
 	width: 25%;
 	height: 50px;
+	border-radius: 0;
 }
 
+/******************
+------Popover------
+*******************/
+.popover {
+	border: none;
+}
+.popover-content {
+	background-color: coral;
+	color: #FFFFFF;
+	padding: 5px !important;
+}
+.arrow:after {
+	border-bottom-color: coral !important;
+}
 /***********************
 ======Weather Info======
 ************************/

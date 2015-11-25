@@ -28,8 +28,8 @@
 				<!-- Zipcode input -->
 				<div class="container-fluid" id="zipcode">
 					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col_centered">
-						<form>
-							<input ng-model="zipcode" placeholder="Enter a location (zipcode or name)" type="text" id="zipcode_input">
+						<form class="form-inline">
+							<input ng-model="zipcode" ng-focus="popoverHelper.hidePopover()" placeholder="Enter a location (zipcode, city, or country)" type="text" class="form-control" id="zipcode_input" >
 							<button ng-click="getWeather()" id="find_button">Find</button>
 						</form>
 					</div>
@@ -70,5 +70,9 @@
 		<script src="js/myApp.js"></script>
 		<!-- Controllers -->
 		<script src="js/myController.js"></script>
+		<!-- Services -->
+		<script src="js/address.js"></script>
+		<script src="js/weather.js"></script>
+		<script src="js/forecast.js"></script>
 	</body>
 </html>
