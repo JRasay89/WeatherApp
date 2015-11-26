@@ -5,24 +5,23 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 	
 	//Get the weather information
 	$scope.getWeather = function() {
+		//Get the geolocation information
 		Address.get($scope.zipcode, function(data) {
-			//console.log(data);
 			if (data.status != "ZERO_RESULTS") {
 				$scope.formattedAddress = data.results[0].formatted_address;
 				$scope.areaLocation = data.results[0].geometry.location;
+				//Get the weather data
 				Weather.get($scope.areaLocation.lat, $scope.areaLocation.lng, function(data) {
-					//console.log(data);
 					$scope.weather = data;
 					$scope.hasWeather = true; //Set to true to show weather in view
 					$scope.changeBackground($scope.weather.weather[0].icon); //Change the background of app base on weather
+					//Get the forecast data
 					Forecast.get($scope.areaLocation.lat, $scope.areaLocation.lng, function(data) {
-						//console.log(data);
 						$scope.forecast = data;
 					});			
 				});				
 			}
-			else {
-				//console.log("No location found, please try again");			
+			else {		
 				$("#zipcode_input").popover({
 					content: "Please enter a valid location",
 					placement: "bottom",
@@ -35,10 +34,10 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 		});
 		//Reset text for input box
 		$scope.zipcode = "";
-	}
+	};
+	
 	//Change the background of the app base on the current weather
 	$scope.changeBackground = function(code) {
-		//console.log(code);
 		$('#background').removeClass($scope.currentBG);
 		switch(code) {
 			case "01d":
@@ -88,7 +87,8 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 				break;	
 		}
 		$('#background').addClass($scope.currentBG);
-	}
+	};
+	
 	//Get the icon for the current weather
 	$scope.getIcon = function(code) {
 		switch(code) {
@@ -147,10 +147,11 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 				return "images/weather_icons/50n.png";
 				break;
 		}
-	}
+	};
+	
 	$scope.showWeather = function() {
 		return $scope.hasWeather;
-	}
+	};
 	
 	//Show or hide popover message
 	$scope.popoverHelper = {
@@ -160,5 +161,5 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 		hidePopover: function() {
 			$("#zipcode_input").popover("hide");
 		}
-	}
+	};
 });
