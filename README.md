@@ -1,5 +1,4 @@
 # WeatherApp
-Work in progress
 
 ##Description
 A simple weather app using AngularJS and [OpenWeatherMap](http://openweathermap.org/) API.
